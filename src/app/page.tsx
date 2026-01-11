@@ -100,11 +100,11 @@ export default function Home() {
 
   // 描画部分
   return (
-    <main className="p-10">
-      <div className="mb-8 flex items-center justify-between">
+    <main className="p-10 max-w-4xl mx-auto">
+      <div className="mb-8 flex items-start justify-between gap-10">
         <Link
           href="/delete/"
-          className="text-blue-500 hover:text-blue-700 transition flex items-center gap-1"
+          className="text-blue-500 hover:text-blue-700 transition flex items-center gap-1 shrink-0 mt-2"
         >
           <span>削除画面へ</span>
         </Link>
@@ -121,7 +121,7 @@ export default function Home() {
           type="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
-          className="border p-2 rounded text-black flex-1"
+          className="border p-2 rounded text-black flex-1 focus:ring-2 focus:ring-cyan-500 outline-none"
           placeholder={user ? "メッセージを入力" : "ログインして投稿してください"}
           disabled={!user} // 未ログイン時は入力不可に
         />
@@ -138,14 +138,14 @@ export default function Home() {
         <h2 className="text-xl font-semibold border-b pb-2">投稿一覧</h2>
         {/* 三項演算子です 条件文 ? Trueの処理 : Falseの処理*/}
         {comments.length === 0 ? (
-          <p className="text-gray-500">まだ投稿はありません。</p>
+          <p className="text-gray-500 text-center py-10">まだ投稿はありません。</p>
         ) : (
           comments.map((comment) => (
             <div
               key={comment.id}
-              className="p-4 bg-gray-50 rounded shadow-sm border text-black"
+              className="p-4 bg-gray-50 rounded shadow-sm border text-black hover:bg-white transition"
             >
-              <p>{comment.content}</p>
+              <p className="whitespace-pre-wrap">{comment.content}</p>
               <small className="text-gray-400">
                 {new Date(comment.created_at).toLocaleString("ja-JP")}
               </small>
