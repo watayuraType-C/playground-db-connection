@@ -2,6 +2,7 @@
 
 import { useState, useEffect} from "react";
 import { supabase } from "@/lib/supabase";
+import Link from "next/link";
 
 // DBの1行分がどんなデータか定義する
 interface Comment {
@@ -68,7 +69,15 @@ export default function Home() {
   // 描画部分
   return (
     <main className="p-10">
-      <h1 className="text-2xl font-bold mb-5">DB接続テスト</h1>
+      <div className="mb-8 flex items-center justify-between">
+        <Link 
+          href="/delete/" 
+          className="text-blue-500 hover:text-blue-700 transition flex items-center gap-1"
+        >
+          <span>削除画面へ</span>
+        </Link>
+      </div>
+      <h1 className="text-2xl font-bold mb-5">今の感想を投稿しよう</h1>
 
       {/* 入力エリア */}
       <form onSubmit={handleSubmit} className="flex gap-2 mb-10">
